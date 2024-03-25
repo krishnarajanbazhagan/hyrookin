@@ -140,9 +140,21 @@
             </div>
             <div>
                 <label for="dob">Date of Birth:</label>
-                <input type="date" id="dob" th:field="*{dateOfBirth}" required />
+                <input type="date" id="dob" name="dob" th:value="*{dateOfBirth}" required />
+              </div>
+            <div>
+              <div>
+                <label for="class_id">Class:</label>
+                <select id="class_id" th:field="*{classEntity.id}">
+                    <option th:each="class : ${classes}" th:value="${class.id}" th:text="${class.name}"></option>
+                </select>
             </div>
             <div>
+              <label for="class_teacher_id">Class Teacher:</label>
+              <select id="class_teacher_id" th:field="*{classTeacherEntity.id}">
+                  <option th:each="teacher : ${teachers}" th:value="${teacher.id}" th:text="${teacher.name}"></option>
+              </select>
+          </div>
             
             <div>
                 <label for="addressLine1">Address Line 1:</label>
@@ -169,12 +181,7 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script>
-        $( function() {
-            $( "#dob" ).datepicker({
-                dateFormat: "yy-mm-dd" 
-            });
-        });
-        
+
         
         </script>
         </body>

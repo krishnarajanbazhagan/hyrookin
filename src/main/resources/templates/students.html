@@ -57,6 +57,8 @@
             <tr>
               <th>ID</th>
               <th>Name</th>
+              <th>class</th>
+              <th>classTeacher</th>
               <th>Date of Birth</th>
               <th>Actions</th>
             </tr>
@@ -65,6 +67,9 @@
             <tr th:each="student : ${students}">
               <td th:text="${student.id}"></td>
               <td th:text="${student.name}"></td>
+              <td th:text="${student.classEntity != null ? student.classEntity.name : 'No Class Assigned'}"></td>
+<td th:text="${student.classTeacherEntity != null ? student.classTeacherEntity.name : 'No Teacher Assigned'}"></td>
+
               <td th:text="${#dates.format(student.dateOfBirth, 'dd/MM/yyyy')}"></td>
               <td>
                 <a th:href="@{/students/{id}/edit(id=${student.id})}" class="btn btn-sm btn-primary">Edit</a>

@@ -14,13 +14,15 @@ public class StudentService {
     @Autowired
     private StudentRepository studentRepository;
 
+
     public List<StudentEntity> getAllStudents() {
         return studentRepository.findAll();
     }
 
-    public StudentEntity addStudent(StudentEntity studentEntity) {
+    public StudentEntity addOrUpdateStudent(StudentEntity studentEntity) {
         return studentRepository.save(studentEntity);
     }
+
 
     public StudentEntity updateStudent(Long id, StudentEntity studentEntity) {
         if (studentRepository.existsById(id)) {
@@ -33,6 +35,7 @@ public class StudentService {
     public void deleteStudent(Long id) {
         studentRepository.deleteById(id);
     }
+    
 
     public StudentEntity getStudentById(Long id) {
         Optional<StudentEntity> student = studentRepository.findById(id);

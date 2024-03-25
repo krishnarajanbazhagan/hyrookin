@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ClassTeacherService {
@@ -40,5 +41,7 @@ public class ClassTeacherService {
     return classTeacherRepository.findById(id)
             .orElseThrow(() -> new EntityNotFoundException("ClassTeacherEntity not found with id: " + id));
 }
-
+public Optional<ClassTeacherEntity> findById(Long id) {
+    return classTeacherRepository.findById(id);
+}
 }
